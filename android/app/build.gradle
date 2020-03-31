@@ -130,8 +130,8 @@ android {
         applicationId "com.theqrl"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 7
-        versionName "2.0"
+        versionCode 8
+        versionName "2.2"
 
         testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
         missingDimensionStrategy "minReactNative", "minReactNative46" //read note
@@ -189,7 +189,7 @@ android {
             // change the default name of the generated apk
             applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "qrlwallet-${defaultConfig.versionName}.${defaultConfig.versionCode}.apk"
+                    outputFileName = "qrlwallet-${defaultConfig.versionName}.apk"
                 }
             }
 

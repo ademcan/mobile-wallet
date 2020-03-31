@@ -1,42 +1,153 @@
 PODS:
-  - "!ProtoCompiler (3.6.0)":
+  - "!ProtoCompiler (3.11.2)":
     - Protobuf (~> 3.0)
-  - "!ProtoCompiler-gRPCPlugin (1.15.1)":
-    - "!ProtoCompiler (= 3.6.0)"
-    - gRPC-ProtoRPC (= 1.15.1)
-  - BoringSSL-GRPC (0.0.2):
-    - BoringSSL-GRPC/Implementation (= 0.0.2)
-    - BoringSSL-GRPC/Interface (= 0.0.2)
-  - BoringSSL-GRPC/Implementation (0.0.2):
-    - BoringSSL-GRPC/Interface (= 0.0.2)
-  - BoringSSL-GRPC/Interface (0.0.2)
-  - gRPC (1.15.1):
-    - gRPC-RxLibrary (= 1.15.1)
-    - gRPC/Main (= 1.15.1)
-  - gRPC-Core (1.15.1):
-    - gRPC-Core/Implementation (= 1.15.1)
-    - gRPC-Core/Interface (= 1.15.1)
-  - gRPC-Core/Implementation (1.15.1):
-    - BoringSSL-GRPC (= 0.0.2)
-    - gRPC-Core/Interface (= 1.15.1)
-    - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.15.1)
-  - gRPC-ProtoRPC (1.15.1):
-    - gRPC-ProtoRPC/Main (= 1.15.1)
-  - gRPC-ProtoRPC/Main (1.15.1):
-    - gRPC (= 1.15.1)
-    - gRPC-RxLibrary (= 1.15.1)
+  - "!ProtoCompiler-gRPCPlugin (1.27.0)":
+    - "!ProtoCompiler (= 3.11.2)"
+    - gRPC-ProtoRPC (= 1.27.0)
+  - abseil/algorithm/algorithm (0.20190808.1)
+  - abseil/base/atomic_hook (0.20190808.1)
+  - abseil/base/base (0.20190808.1):
+    - abseil/base/atomic_hook
+    - abseil/base/base_internal
+    - abseil/base/config
+    - abseil/base/core_headers
+    - abseil/base/dynamic_annotations
+    - abseil/base/log_severity
+    - abseil/base/spinlock_wait
+    - abseil/meta/type_traits
+  - abseil/base/base_internal (0.20190808.1):
+    - abseil/meta/type_traits
+  - abseil/base/bits (0.20190808.1):
+    - abseil/base/core_headers
+  - abseil/base/config (0.20190808.1)
+  - abseil/base/core_headers (0.20190808.1):
+    - abseil/base/config
+  - abseil/base/dynamic_annotations (0.20190808.1)
+  - abseil/base/endian (0.20190808.1):
+    - abseil/base/config
+    - abseil/base/core_headers
+  - abseil/base/log_severity (0.20190808.1):
+    - abseil/base/core_headers
+  - abseil/base/spinlock_wait (0.20190808.1):
+    - abseil/base/core_headers
+  - abseil/base/throw_delegate (0.20190808.1):
+    - abseil/base/base
+    - abseil/base/config
+  - abseil/container/compressed_tuple (0.20190808.1):
+    - abseil/utility/utility
+  - abseil/container/inlined_vector (0.20190808.1):
+    - abseil/algorithm/algorithm
+    - abseil/base/core_headers
+    - abseil/base/throw_delegate
+    - abseil/container/inlined_vector_internal
+    - abseil/memory/memory
+  - abseil/container/inlined_vector_internal (0.20190808.1):
+    - abseil/base/core_headers
+    - abseil/container/compressed_tuple
+    - abseil/memory/memory
+    - abseil/meta/type_traits
+    - abseil/types/span
+  - abseil/memory/memory (0.20190808.1):
+    - abseil/base/core_headers
+    - abseil/meta/type_traits
+  - abseil/meta/type_traits (0.20190808.1):
+    - abseil/base/config
+  - abseil/numeric/int128 (0.20190808.1):
+    - abseil/base/config
+    - abseil/base/core_headers
+  - abseil/strings/internal (0.20190808.1):
+    - abseil/base/core_headers
+    - abseil/base/endian
+    - abseil/meta/type_traits
+  - abseil/strings/strings (0.20190808.1):
+    - abseil/base/base
+    - abseil/base/bits
+    - abseil/base/config
+    - abseil/base/core_headers
+    - abseil/base/endian
+    - abseil/base/throw_delegate
+    - abseil/memory/memory
+    - abseil/meta/type_traits
+    - abseil/numeric/int128
+    - abseil/strings/internal
+  - abseil/types/bad_optional_access (0.20190808.1):
+    - abseil/base/base
+    - abseil/base/config
+  - abseil/types/optional (0.20190808.1):
+    - abseil/base/base_internal
+    - abseil/base/config
+    - abseil/base/core_headers
+    - abseil/memory/memory
+    - abseil/meta/type_traits
+    - abseil/types/bad_optional_access
+    - abseil/utility/utility
+  - abseil/types/span (0.20190808.1):
+    - abseil/algorithm/algorithm
+    - abseil/base/core_headers
+    - abseil/base/throw_delegate
+    - abseil/meta/type_traits
+  - abseil/utility/utility (0.20190808.1):
+    - abseil/base/base_internal
+    - abseil/base/config
+    - abseil/meta/type_traits
+  - boost-for-react-native (1.63.0)
+  - BoringSSL-GRPC (0.0.5):
+    - BoringSSL-GRPC/Implementation (= 0.0.5)
+    - BoringSSL-GRPC/Interface (= 0.0.5)
+  - BoringSSL-GRPC/Implementation (0.0.5):
+    - BoringSSL-GRPC/Interface (= 0.0.5)
+  - BoringSSL-GRPC/Interface (0.0.5)
+  - DoubleConversion (1.1.5)
+  - Folly (2018.10.22.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+  - glog (0.3.4)
+  - gRPC-Core (1.27.0):
+    - gRPC-Core/Implementation (= 1.27.0)
+    - gRPC-Core/Interface (= 1.27.0)
+  - gRPC-Core/Implementation (1.27.0):
+    - abseil/container/inlined_vector (= 0.20190808.1)
+    - abseil/strings/strings (= 0.20190808.1)
+    - abseil/types/optional (= 0.20190808.1)
+    - BoringSSL-GRPC (= 0.0.5)
+    - gRPC-Core/Interface (= 1.27.0)
+  - gRPC-Core/Interface (1.27.0)
+  - gRPC-ProtoRPC (1.27.0):
+    - gRPC-ProtoRPC/Legacy (= 1.27.0)
+    - gRPC-ProtoRPC/Legacy-Header (= 1.27.0)
+    - gRPC-ProtoRPC/Main (= 1.27.0)
+  - gRPC-ProtoRPC/Legacy (1.27.0):
+    - gRPC-ProtoRPC/Legacy-Header (= 1.27.0)
+    - gRPC-ProtoRPC/Main (= 1.27.0)
+    - gRPC-RxLibrary (= 1.27.0)
+    - gRPC/GRPCCore (= 1.27.0)
     - Protobuf (~> 3.0)
-  - gRPC-RxLibrary (1.15.1)
-  - gRPC/Main (1.15.1):
-    - gRPC-Core (= 1.15.1)
-    - gRPC-RxLibrary (= 1.15.1)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - Protobuf (3.6.1)
+  - gRPC-ProtoRPC/Legacy-Header (1.27.0)
+  - gRPC-ProtoRPC/Main (1.27.0):
+    - gRPC-ProtoRPC/Legacy-Header (= 1.27.0)
+    - gRPC/Interface (= 1.27.0)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.27.0):
+    - gRPC-RxLibrary/Implementation (= 1.27.0)
+    - gRPC-RxLibrary/Interface (= 1.27.0)
+  - gRPC-RxLibrary/Implementation (1.27.0):
+    - gRPC-RxLibrary/Interface
+  - gRPC-RxLibrary/Interface (1.27.0)
+  - gRPC/GRPCCore (1.27.0):
+    - gRPC-Core (= 1.27.0)
+    - gRPC-RxLibrary (= 1.27.0)
+    - gRPC/Interface (= 1.27.0)
+    - gRPC/Interface-Legacy (= 1.27.0)
+  - gRPC/Interface (1.27.0):
+    - gRPC/Interface-Legacy (= 1.27.0)
+  - gRPC/Interface-Legacy (1.27.0):
+    - gRPC-RxLibrary/Interface (= 1.27.0)
+  - Protobuf (3.11.4)
+  - React (0.59.5):
+    - React/Core (= 0.59.5)
+  - React/Core (0.59.5):
+    - yoga (= 0.59.5.React)
   - theQRL (0.0.1):
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
     - theQRL/Messages (= 0.0.1)
@@ -48,38 +159,57 @@ PODS:
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
     - gRPC-ProtoRPC
     - theQRL/Messages
+  - yoga (0.59.5.React)
 
 DEPENDENCIES:
+  - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
+  - React (from `../node_modules/react-native`)
   - theQRL (from `.`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - "!ProtoCompiler"
     - "!ProtoCompiler-gRPCPlugin"
+    - abseil
+    - boost-for-react-native
     - BoringSSL-GRPC
+    - DoubleConversion
+    - glog
     - gRPC
     - gRPC-Core
     - gRPC-ProtoRPC
     - gRPC-RxLibrary
-    - nanopb
     - Protobuf
 
 EXTERNAL SOURCES:
+  Folly:
+    :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
+  React:
+    :path: "../node_modules/react-native"
   theQRL:
     :path: "."
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  "!ProtoCompiler": c9526df99fafd398a393def617ae18d3774b7232
-  "!ProtoCompiler-gRPCPlugin": 3f2457bb2a5867ae1ef17e6ca233343a7d54422a
-  BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
-  gRPC: c1fa6fccfc3d31212f32aa7d4e40ab0452195ccb
-  gRPC-Core: 840d1068a0a57eeca00b52486897ad6265b8f0be
-  gRPC-ProtoRPC: 69552f09c9e8e6c253663668525b7c708814a9bd
-  gRPC-RxLibrary: 67a03bd22ef654e95fd7d6e4b9c5e62420a867b8
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  "!ProtoCompiler": da24805d8339f352ec7bb4cb4df2db6a3be45665
+  "!ProtoCompiler-gRPCPlugin": f391d1b326229c16a05ca3d2611f28d66b9ed9fb
+  abseil: 88704f97dbfdb436f29ea8deb788a46c5115f581
+  boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  BoringSSL-GRPC: 8f2c6b5fbae71d1f3aabb787a52fd4929d1eef33
+  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
+  Folly: de497beb10f102453a1afa9edbf8cf8a251890de
+  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
+  gRPC: 5001a90441b0bbb1d48afa36c9461ebc381bcb6a
+  gRPC-Core: 1f6b96422c8978621b199d30be9d8254d873f307
+  gRPC-ProtoRPC: 674a6d9bbf1e184077651d7412b9d5e76a8fb36b
+  gRPC-RxLibrary: 46eef33e55e9cf6b7a21cb60dd034175a38ece40
+  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
+  React: 90adac468c7b72bf1fa6c64bf230650f851a8388
   theQRL: 6245e125ce857488a8b00d2af29efc307a667eaa
+  yoga: 2e571f113e8cbeb0eb752aeebc86c1bfe7a8200c
 
-PODFILE CHECKSUM: 4ed4765ca4165e5dc11780253e4a259b06118020
+PODFILE CHECKSUM: 70f8ee0fe0a7a1d5d6af7146a3bec67e8ab6cf00
 
 COCOAPODS: 1.7.3

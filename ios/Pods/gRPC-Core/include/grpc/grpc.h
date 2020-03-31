@@ -73,10 +73,11 @@ GRPCAPI void grpc_init(void);
     Before it's called, there should haven been a matching invocation to
     grpc_init().
 
-    No memory is used by grpc after this call returns, nor are any instructions
-    executing within the grpc library.
-    Prior to calling, all application owned grpc objects must have been
-    destroyed. */
+    The last call to grpc_shutdown will initiate cleaning up of grpc library
+    internals, which can happen in another thread. Once the clean-up is done,
+    no memory is used by grpc, nor are any instructions executing within the
+    grpc library.  Prior to calling, all application owned grpc objects must
+    have been destroyed. */
 GRPCAPI void grpc_shutdown(void);
 
 /** EXPERIMENTAL. Returns 1 if the grpc library has been initialized.
@@ -84,6 +85,10 @@ GRPCAPI void grpc_shutdown(void);
     part of stabilizing the fork support API, as tracked in
     https://github.com/grpc/grpc/issues/15334 */
 GRPCAPI int grpc_is_initialized(void);
+
+/** EXPERIMENTAL. Blocking shut down grpc library.
+    This is only for wrapped language to use now. */
+GRPCAPI void grpc_shutdown_blocking(void);
 
 /** Return a string representing the current version of grpc */
 GRPCAPI const char* grpc_version_string(void);
@@ -111,7 +116,8 @@ GRPCAPI grpc_completion_queue* grpc_completion_queue_create_for_pluck(
     of GRPC_CQ_CALLBACK and grpc_cq_polling_type of GRPC_CQ_DEFAULT_POLLING.
     This function is experimental. */
 GRPCAPI grpc_completion_queue* grpc_completion_queue_create_for_callback(
-    void* shutdown_callback, void* reserved);
+    grpc_experimental_completion_queue_functor* shutdown_callback,
+    void* reserved);
 
 /** Create a completion queue */
 GRPCAPI grpc_completion_queue* grpc_completion_queue_create(
@@ -218,7 +224,9 @@ GRPCAPI grpc_call* grpc_channel_create_call(
 GRPCAPI void grpc_channel_ping(grpc_channel* channel, grpc_completion_queue* cq,
                                void* tag, void* reserved);
 
-/** Pre-register a method/host pair on a channel. */
+/** Pre-register a method/host pair on a channel.
+    method and host are not owned and must remain alive while the server is
+    running. */
 GRPCAPI void* grpc_channel_register_call(grpc_channel* channel,
                                          const char* method, const char* host,
                                          void* reserved);
@@ -247,10 +255,13 @@ GRPCAPI void* grpc_call_arena_alloc(grpc_call* call, size_t size);
     appropriate to call grpc_completion_queue_next or
     grpc_completion_queue_pluck consequent to the failed grpc_call_start_batch
     call.
+    If a call to grpc_call_start_batch with an empty batch returns
+    GRPC_CALL_OK, the tag is put in the completion queue immediately.
     THREAD SAFETY: access to grpc_call_start_batch in multi-threaded environment
     needs to be synchronized. As an optimization, you may synchronize batches
     containing just send operations independently from batches containing just
-    receive operations. */
+    receive operations. Access to grpc_call_start_batch with an empty batch is
+    thread-compatible. */
 GRPCAPI grpc_call_error grpc_call_start_batch(grpc_call* call,
                                               const grpc_op* ops, size_t nops,
                                               void* tag, void* reserved);
@@ -314,14 +325,14 @@ GRPCAPI void grpc_channel_destroy(grpc_channel* channel);
    If a grpc_call fails, it's guaranteed that no change to the call state
    has been made. */
 
-/** Called by clients to cancel an RPC on the server.
+/** Cancel an RPC.
     Can be called multiple times, from any thread.
     THREAD-SAFETY grpc_call_cancel and grpc_call_cancel_with_status
     are thread-safe, and can be called at any point before grpc_call_unref
     is called.*/
 GRPCAPI grpc_call_error grpc_call_cancel(grpc_call* call, void* reserved);
 
-/** Called by clients to cancel an RPC on the server.
+/** Cancel an RPC.
     Can be called multiple times, from any thread.
     If a status has not been received for the call, set it to the status code
     and description passed in.
@@ -499,9 +510,28 @@ GRPCAPI const grpc_arg_pointer_vtable* grpc_resource_quota_arg_vtable(void);
    The returned string is allocated and must be freed by the application. */
 GRPCAPI char* grpc_channelz_get_top_channels(intptr_t start_channel_id);
 
+/* Gets all servers that exist in the process. */
+GRPCAPI char* grpc_channelz_get_servers(intptr_t start_server_id);
+
+/* Returns a single Server, or else a NOT_FOUND code. */
+GRPCAPI char* grpc_channelz_get_server(intptr_t server_id);
+
+/* Gets all server sockets that exist in the server. */
+GRPCAPI char* grpc_channelz_get_server_sockets(intptr_t server_id,
+                                               intptr_t start_socket_id,
+                                               intptr_t max_results);
+
 /* Returns a single Channel, or else a NOT_FOUND code. The returned string
    is allocated and must be freed by the application. */
 GRPCAPI char* grpc_channelz_get_channel(intptr_t channel_id);
+
+/* Returns a single Subchannel, or else a NOT_FOUND code. The returned string
+   is allocated and must be freed by the application. */
+GRPCAPI char* grpc_channelz_get_subchannel(intptr_t subchannel_id);
+
+/* Returns a single Socket, or else a NOT_FOUND code. The returned string
+   is allocated and must be freed by the application. */
+GRPCAPI char* grpc_channelz_get_socket(intptr_t socket_id);
 
 #ifdef __cplusplus
 }

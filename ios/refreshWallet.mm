@@ -218,6 +218,7 @@ RCT_EXPORT_METHOD(refreshWallet:(NSString*)walletindex callback:(RCTResponseSend
             GetLatestDataReq *getLatestDataReq = [GetLatestDataReq message];
             getLatestDataReq.filter = GetLatestDataReq_Filter_TransactionsUnconfirmed;
 
+//            [client getLatestData:getLatestDataReq handler:^(GetLatestDataResp *response, NSError *error) {
             [client getLatestDataWithRequest:getLatestDataReq handler:^(GetLatestDataResp *response, NSError *error) {
               if ( (unsigned long)response.transactionsUnconfirmedArray_Count == 0 ){
 //                NSLog(@"NO UNCONFIRMED TX");

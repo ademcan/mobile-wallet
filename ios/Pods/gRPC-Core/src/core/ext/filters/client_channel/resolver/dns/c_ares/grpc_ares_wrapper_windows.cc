@@ -19,11 +19,16 @@
 #include <grpc/support/port_platform.h>
 
 #include "src/core/lib/iomgr/port.h"
-#if GRPC_ARES == 1 && defined(GPR_WINDOWS)
+#if GRPC_ARES == 1 && defined(GRPC_WINDOWS_SOCKET_ARES_EV_DRIVER)
 
+#include <grpc/support/string_util.h>
+
+#include "src/core/ext/filters/client_channel/parse_address.h"
 #include "src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper.h"
+#include "src/core/ext/filters/client_channel/server_address.h"
+#include "src/core/lib/gpr/string.h"
 #include "src/core/lib/iomgr/socket_windows.h"
 
 bool grpc_ares_query_ipv6() { return grpc_ipv6_loopback_available(); }
 
-#endif /* GRPC_ARES == 1 && defined(GPR_WINDOWS) */
+#endif /* GRPC_ARES == 1 && defined(GRPC_WINDOWS_SOCKET_ARES_EV_DRIVER) */

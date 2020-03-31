@@ -556,6 +556,7 @@ public class AndroidWalletModule extends ReactContextBaseJavaModule {
 
         // converting xmssPK to byte array
         String xmssPK = getEncrypted("xmsspk".concat(walletindex));
+        System.out.println( "oooooooooooooooooooo" );
         System.out.println( xmssPK );
         int xmsslen = xmssPK.length();
         byte[] xmssdata = new byte[xmsslen / 2];

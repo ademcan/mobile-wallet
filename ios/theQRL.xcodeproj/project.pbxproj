@@ -665,10 +665,10 @@
 				691A4E6721397E7B0089FB95 /* libqrllib.a in Frameworks */,
 				691A4E6B21397E7F0089FB95 /* libqrllib.a in Frameworks */,
 				69B8522222D766EF0006BC64 /* TSBackgroundFetch.framework in Frameworks */,
-				69B8522022D766CC0006BC64 /* libRNBackgroundFetch.a in Frameworks */,
 				69B8522E22D768B60006BC64 /* libRNBackgroundTimer.a in Frameworks */,
 				69641C4E230EFEF300DC1525 /* libRNShimmer.a in Frameworks */,
 				69641C58230F150000DC1525 /* libBVLinearGradient.a in Frameworks */,
+				69B8522022D766CC0006BC64 /* libRNBackgroundFetch.a in Frameworks */,
 				6989784F23290792006A4E19 /* libRNKeychain.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1249,6 +1249,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
